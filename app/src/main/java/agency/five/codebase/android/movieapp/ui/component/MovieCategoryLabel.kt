@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-//Nije riješen
+
 
 data class MovieCategoryLabelViewState(
     val movie : String
@@ -23,29 +23,31 @@ fun MovieCategoryLabel(
     modifier: Modifier = Modifier
 )
 {
-    Row() {
-        Column(
-            modifier = Modifier.width(54.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            Text(
-                text = "Movies",
-                fontWeight = FontWeight.Bold,
-                fontSize = 16.sp,
-//                style = TextStyle(textDecoration = TextDecoration.Underline)
-            )
-            Box(){
-                Divider(color = Color.Black, thickness = 3.dp,)
-            }
-        }
-        Text(
-            text = "Movies",
-            fontWeight = FontWeight.Normal,
-            color = Gray600,
-            fontSize = 16.sp
-        )
-    }
+//    Row() {
+//        Column(
+//            modifier = Modifier.width(54.dp),
+//            verticalArrangement = Arrangement.spacedBy(4.dp)
+//        ) {
+//            Text(
+//                text = "Movies",
+//                fontWeight = FontWeight.Bold,
+//                color = Color.Black,
+//                fontSize = 16.sp
+//            )
+//            Box(){
+//                Divider(color = Color.Black, thickness = 3.dp,)
+//            }
+//        }
+//        Text(
+//            text = "Movies",
+//            fontWeight = FontWeight.Normal,
+//            color = Gray600,
+//            fontSize = 16.sp
+//        )
+//    }
 }
+
+//Will complete today
 
 @Preview(showBackground = true)
 @Composable
