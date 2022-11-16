@@ -1,56 +1,66 @@
-
+package agency.five.codebase.android.movieapp.ui.component
 
 import agency.five.codebase.android.movieapp.mock.MoviesMock
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
+const val zeroAngle =0f
+const val fullAngle = 360f
+const val reflexAngle = 270f
+const val barStroke = 24f
 
 @Composable
 fun UserScoreProgressBar(
     userScore: Float,
     modifier: Modifier = Modifier
 ){
-    Box(modifier = modifier){
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier
+    ){
         Canvas(modifier = modifier
-            .size(90.dp)
-            .padding(10.dp)){
+            .fillMaxSize()
+        ){
             drawArc(
                 color = Color.Green,
                 alpha = 0.2f,
-                startAngle = 0f,
-                sweepAngle = 360f,
+                startAngle = zeroAngle,
+                sweepAngle = fullAngle,
                 useCenter = false,
                 style = Stroke(
-                    width = 24f,
+                    width = barStroke,
                     cap = StrokeCap.Round
                 )
             )
             drawArc(
                 color = Color.Green,
-                startAngle = 270f,
-                sweepAngle = userScore*360f,
+                startAngle = reflexAngle,
+                sweepAngle = userScore * fullAngle,
                 useCenter = false,
                 style = Stroke(
-                    width = 24f,
+                    width = barStroke,
                     cap = StrokeCap.Round
                 )
             )
         }
-        Text(
-            text = (userScore*10).toString(),
+        Text(text = (userScore*10).toString(),
             fontWeight = FontWeight.Medium,
             fontSize = 16.sp,
-            modifier = modifier.align(Alignment.Center)
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .align(Alignment.Center)
         )
     }
 }
@@ -58,5 +68,8 @@ fun UserScoreProgressBar(
 @Preview(showBackground = true)
 @Composable
 fun UserScoreProgressBarPreview() {
-    UserScoreProgressBar(userScore =  MoviesMock.getMovieDetails().voteAverage)
+    val voteAverage = MoviesMock.getMovieDetails().voteAverage
+    UserScoreProgressBar(userScore = voteAverage,
+    modifier = Modifier
+        .size(width = 70.dp, height = 70.dp))
 }

@@ -18,11 +18,12 @@ data class CrewItemViewState(
 
 @Composable
 fun CrewItem(
-    crewItemViewState: Crewman,
+    crewItemViewState: CrewItemViewState,
     modifier: Modifier = Modifier
-)
-{
-    Column() {
+) {
+    Column(
+        modifier = modifier
+    ) {
         Text(
             text = crewItemViewState.name,
             fontWeight = FontWeight.Bold,
@@ -35,6 +36,14 @@ fun CrewItem(
 @Preview
 @Composable
 private fun CrewItemPreview() {
-    CrewItem(crewItemViewState = MoviesMock.getCrewman())
+    val crew: Crewman = MoviesMock.getCrewman()
+    val crewItemViewState = CrewItemViewState(
+        name = crew.name,
+        job = crew.job,
+    )
+    CrewItem(
+        crewItemViewState = crewItemViewState,
+        modifier = Modifier
+    )
 }
 
