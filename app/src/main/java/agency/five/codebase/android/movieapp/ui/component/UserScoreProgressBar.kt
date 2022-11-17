@@ -16,10 +16,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private const val ZeroAngle = 0f
-private const val FullAngle = 360f
-private const val ReflexAngle = 270f
-private const val BarStroke = 24f
+private const val ZERO_ANGLE = 0f
+private const val FULL_ANGLE = 360f
+private const val REFLEX_ANGLE = 270f
+private const val BAR_STROKE = 24f
 
 @Composable
 fun UserScoreProgressBar(
@@ -37,21 +37,21 @@ fun UserScoreProgressBar(
             drawArc(
                 color = Color.Green,
                 alpha = 0.2f,
-                startAngle = ZeroAngle,
-                sweepAngle = FullAngle,
+                startAngle = ZERO_ANGLE,
+                sweepAngle = FULL_ANGLE,
                 useCenter = false,
                 style = Stroke(
-                    width = BarStroke,
+                    width = BAR_STROKE,
                     cap = StrokeCap.Round
                 )
             )
             drawArc(
                 color = Color.Green,
-                startAngle = ReflexAngle,
-                sweepAngle = userScore * FullAngle,
+                startAngle = REFLEX_ANGLE,
+                sweepAngle = userScore * FULL_ANGLE,
                 useCenter = false,
                 style = Stroke(
-                    width = BarStroke,
+                    width = BAR_STROKE,
                     cap = StrokeCap.Round
                 )
             )
