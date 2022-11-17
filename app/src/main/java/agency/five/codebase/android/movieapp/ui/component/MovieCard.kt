@@ -41,7 +41,8 @@ fun MovieCard(
                 isFavorite = movieCardViewState.isFavorite,
                 onClick = onClick,
                 modifier = Modifier
-                    .size(32.dp))
+                    .size(32.dp)
+            )
         }
     }
 }
@@ -56,6 +57,6 @@ private fun MovieCardPreview() {
     )
     MovieCard(
         movieCardViewState = movieCardViewState,
-        onClick = {  }
+        onClick = { }
     )
 }

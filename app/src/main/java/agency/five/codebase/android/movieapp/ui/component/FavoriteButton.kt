@@ -14,20 +14,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-//fun FavoriteButton(modifier: Modifier = Modifier) {
-//    val isFavorite = remember { mutableStateOf(true) }
-
 fun FavoriteButton(
     isFavorite: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-){
+) {
     Image(
         painter = painterResource(
-            id = if(isFavorite)
+            id = if (isFavorite)
                 R.drawable.heart_full
             else
-                R.drawable.heart_empty),
+                R.drawable.heart_empty
+        ),
         contentDescription = "Favorite",
         modifier = modifier
             .size(32.dp)

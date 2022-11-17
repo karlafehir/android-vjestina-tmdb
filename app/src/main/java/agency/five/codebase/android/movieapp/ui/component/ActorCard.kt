@@ -26,32 +26,35 @@ data class ActorCardViewState(
 fun ActorCard(
     actorCardViewState: ActorCardViewState,
     modifier: Modifier = Modifier
-){
-        Card(
-            modifier = modifier,
-            shape = RoundedCornerShape(10.dp),
-            elevation = 10.dp
-        ) {
-            Column() {
-                AsyncImage(
-                    model = actorCardViewState.imageUrl,
-                    contentDescription = "Image",
-                    modifier = Modifier
-                        .height(180.dp)
-                        .fillMaxSize(),
-                    contentScale = ContentScale.FillWidth
-                )
-                Text(text = actorCardViewState.name,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
-                )
-                Text(text = actorCardViewState.character)
-                Spacer(
-                    modifier = modifier
-                        .padding(4.dp)
-                )
-            }
+) {
+    Card(
+        modifier = modifier,
+        shape = RoundedCornerShape(10.dp),
+        elevation = 10.dp
+    ) {
+        Column() {
+            AsyncImage(
+                model = actorCardViewState.imageUrl,
+                contentDescription = "Image",
+                modifier = Modifier
+                    .height(180.dp)
+                    .fillMaxSize(),
+                contentScale = ContentScale.FillWidth
+            )
+            Text(
+                text = actorCardViewState.name,
+                fontWeight = FontWeight.Bold,
+                fontSize = 16.sp,
+                modifier = Modifier
+                    .padding(4.dp)
+            )
+            Text(
+                text = actorCardViewState.character,
+                modifier = Modifier
+                    .padding(4.dp))
+
         }
+    }
 }
 
 @Preview

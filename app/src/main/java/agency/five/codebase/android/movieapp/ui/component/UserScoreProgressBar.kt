@@ -16,46 +16,48 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-const val zeroAngle =0f
-const val fullAngle = 360f
-const val reflexAngle = 270f
-const val barStroke = 24f
+private const val ZeroAngle = 0f
+private const val FullAngle = 360f
+private const val ReflexAngle = 270f
+private const val BarStroke = 24f
 
 @Composable
 fun UserScoreProgressBar(
     userScore: Float,
     modifier: Modifier = Modifier
-){
+) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
-    ){
-        Canvas(modifier = modifier
-            .fillMaxSize()
-        ){
+    ) {
+        Canvas(
+            modifier = modifier
+                .fillMaxSize()
+        ) {
             drawArc(
                 color = Color.Green,
                 alpha = 0.2f,
-                startAngle = zeroAngle,
-                sweepAngle = fullAngle,
+                startAngle = ZeroAngle,
+                sweepAngle = FullAngle,
                 useCenter = false,
                 style = Stroke(
-                    width = barStroke,
+                    width = BarStroke,
                     cap = StrokeCap.Round
                 )
             )
             drawArc(
                 color = Color.Green,
-                startAngle = reflexAngle,
-                sweepAngle = userScore * fullAngle,
+                startAngle = ReflexAngle,
+                sweepAngle = userScore * FullAngle,
                 useCenter = false,
                 style = Stroke(
-                    width = barStroke,
+                    width = BarStroke,
                     cap = StrokeCap.Round
                 )
             )
         }
-        Text(text = (userScore*10).toString(),
+        Text(
+            text = (userScore * 10).toString(),
             fontWeight = FontWeight.Medium,
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
@@ -69,7 +71,9 @@ fun UserScoreProgressBar(
 @Composable
 fun UserScoreProgressBarPreview() {
     val voteAverage = MoviesMock.getMovieDetails().voteAverage
-    UserScoreProgressBar(userScore = voteAverage,
-    modifier = Modifier
-        .size(width = 70.dp, height = 70.dp))
+    UserScoreProgressBar(
+        userScore = voteAverage,
+        modifier = Modifier
+            .size(width = 70.dp, height = 70.dp)
+    )
 }

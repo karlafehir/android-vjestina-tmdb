@@ -20,14 +20,14 @@ data class MovieCategoryLabelViewState(
     val categoryText: MovieCategoryLabelTextViewState
 )
 
-sealed class MovieCategoryLabelTextViewState{
-    class Text(val text: String): MovieCategoryLabelTextViewState()
-    class TextRes(@StringRes val textRes: Int): MovieCategoryLabelTextViewState()
+sealed class MovieCategoryLabelTextViewState {
+    class Text(val text: String) : MovieCategoryLabelTextViewState()
+    class TextRes(@StringRes val textRes: Int) : MovieCategoryLabelTextViewState()
 }
 
 @Composable
-fun selectTextSource(movieCategoryLabelViewState: MovieCategoryLabelViewState): String{
-    return when(val categoryText = movieCategoryLabelViewState.categoryText) {
+fun selectTextSource(movieCategoryLabelViewState: MovieCategoryLabelViewState): String {
+    return when (val categoryText = movieCategoryLabelViewState.categoryText) {
         is MovieCategoryLabelTextViewState.Text -> categoryText.text
         is MovieCategoryLabelTextViewState.TextRes -> stringResource(id = categoryText.textRes)
     }
@@ -54,17 +54,18 @@ fun MovieCategoryLabel(
                 modifier = Modifier
                     .fillMaxWidth()
             )
-            Spacer(modifier = Modifier
-                .size(2.dp)
+            Spacer(
+                modifier = Modifier
+                    .size(2.dp)
             )
-            Divider(color = Color.Black,
+            Divider(
+                color = Color.Black,
                 thickness = 3.dp,
                 modifier = Modifier
                     .fillMaxWidth()
             )
         }
-    }
-    else {
+    } else {
         Text(
             text = selectTextSource(movieCategoryLabelViewState = item),
             color = Color.Gray,
@@ -78,12 +79,12 @@ fun MovieCategoryLabel(
 
 @Preview
 @Composable
-fun MovieCategoryLabelPreview(){
+fun MovieCategoryLabelPreview() {
     val inputText = MovieCategoryLabelTextViewState.Text("TV")
     val stringRes = MovieCategoryLabelTextViewState.Text("Movies")
     val categoryViewState1 = MovieCategoryLabelViewState(0, true, stringRes)
     val categoryViewState2 = MovieCategoryLabelViewState(1, false, inputText)
-    Row{
+    Row {
         MovieCategoryLabel(item = categoryViewState1, { })
         MovieCategoryLabel(item = categoryViewState2, { })
     }
